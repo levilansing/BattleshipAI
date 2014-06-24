@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Battleship AI - Levi Lansing</title>
+	<link type="text/css" rel="stylesheet" href="css/battleship.css" />
+	<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/observer.min.js"></script>
+	<script type="text/javascript" src="js/battleship.js"></script>
+	<script type="text/javascript" src="js/battleshipAI.js"></script>
+	<script type="text/javascript" src="js/battleshipAIRandom.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			Battleship.init();
+		});
+	</script>
+</head>
+<body>
+
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand">Battleship Client</a>
+		</div>
+		<div class="navbar-right">
+			<button type="submit" class="btn btn-info" id="playAgain" style="display: none">Play Again</button>
+		</div>
+		<div class="navbar-right" id="errorContainer">
+		</div>
+
+	</div><!-- /.container-fluid -->
+</nav>
+
+<div class="container" id="connectionForm" style="max-width:500px;">
+	<form class="form-horizontal" role="form">
+		<div class="form-group">
+			<label for="serverUrl" class="col-sm-2 control-label">Server</label>
+			<div class="col-sm-10">
+				<input type="url" class="form-control" id="serverUrl" placeholder="http://" value="http://localhost:3000/" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="serverUrl" class="col-sm-2 control-label">User</label>
+			<div class="col-sm-10">
+				<input type="url" class="form-control" id="user" placeholder="" value="Levi" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="algorithm" class="col-sm-2 control-label">Algorithm</label>
+			<div class="col-sm-10">
+				<select id="algorithm" class="form-control">
+					<option value="BattleshipAIRandom">Random w/Targeting</option>
+					<option value="BattleshipAIAdvanced" selected>Advanced</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-info" id="connectToServer">Connect</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="container" id="gameScreen" style="display:none">
+	<div class="row">
+		<div class="col-md-8">
+			<div id="boardStatus">
+			</div>
+			<h2 id="winOrLose" class="text-center"></h2>
+		</div>
+		<div class="col-md-4 statusTable">
+			<div class="row">
+				<div class="col-4 title">Speed:</div>
+				<div class="col-8"><select name="playSpeed" class="form-control">
+					<option value="-1">Paused</option>
+					<option value="3000">Slowest</option>
+					<option value="1500">Slow</option>
+					<option value="600" selected>Medium</option>
+					<option value="300">Fast</option>
+					<option value="20">Fastest</option>
+				</select></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">User:</div>
+				<div class="col-8" id="infoUser"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Algorithm:</div>
+				<div class="col-8" id="infoAlgorithm"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Status:</div>
+				<div class="col-8" id="infoStatus"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Moves:</div>
+				<div class="col-8" id="infoMove"></div>
+			</div>
+			<div class="row">
+				<div class="col-12 title">&nbsp;</div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Carrier:</div>
+				<div class="col-8" id="statusCarrier"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Battleship:</div>
+				<div class="col-8" id="statusBattleship"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Submarine:</div>
+				<div class="col-8" id="statusSubmarine"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Destroyer:</div>
+				<div class="col-8" id="statusDestroyer"></div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Patrol:</div>
+				<div class="col-8" id="statusPatrol"></div>
+			</div>
+			<div class="row">
+				<div class="col-12 title">&nbsp;</div>
+			</div>
+			<div class="row">
+				<div class="col-4 title">Errors:</div>
+				<div class="col-8" id="statusError"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+@import "bootstrap/bootstrap";
+
+.navbar {
+	.alert {
+		margin: 5px 0 0 0;
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+
+	#playAgain {
+		margin: 7px 0 5px 0;
+	}
+}
+
+.statusTable {
+	line-height: 1.7em;
+}
+
+#gameScreen .title {
+	text-align: right;
+	color: @gray-light;
+}
+
+.col-4,.col-8,.col-12 {
+	float: left;
+	position: relative;
+	min-height: 1px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.col-4 {
+	width: (4/12*100%);
+}
+.col-8 {
+	width: (8/12*100%);
+}
+.col-12 {
+	width: 100%;
+}
+
+#boardStatus {
+	text-align: center;
+
+	.board {
+		display: inline-block;
+		width: 352px;
+		padding: 6px 2px 2px 0px;
+		margin: 0 auto;
+		background: #f0f1f0;
+		padding-top: 4px;
+	}
+	.boardRow {
+		display: inline-block;
+		height: 30px;
+	}
+	.boardCell {
+		position: relative;
+		display: inline-block;
+		margin: 0 0 0px 4px;
+		width: 30px;
+		height: 30px;
+		outline: 1px solid rgba(0, 0, 0, .2);
+
+		-webkit-transition: .15s ease-in-out;
+		-moz-transition: .15s ease-in-out;
+		-o-transition: .15s ease-in-out;
+		transition: .15s ease-in-out;
+
+		> div {
+			position: absolute;
+			margin: 6px 0 0 6px;
+			width: 18px;
+			height: 18px;
+			border-radius: 10px;
+
+			-webkit-transition: .3s ease-out;
+			-moz-transition: .3s ease-out;
+			-o-transition: .3s ease-out;
+			transition: .3s ease-out;
+
+
+			&.new {
+				border-radius: 0px;
+			}
+
+			&.hit {
+				background: #d9534f;
+				border: 1px solid rgba(104, 42, 42, 1);
+			}
+			&.miss {
+				background: #5bc0de;
+				border: 1px solid rgb(63, 105, 127);
+			}
+			&.sunk {
+				background: #742c2f;
+				border: 1px solid rgba(55, 25, 27, 1);
+			}
+
+		}
+	}
+}
